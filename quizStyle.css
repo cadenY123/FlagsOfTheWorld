@@ -1,0 +1,116 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+    background-image: url(images/background.png);
+    background-size: 200px;
+}
+#header {
+    position: sticky;
+    top: 0;
+    z-index: 9;
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+    
+    background-image: url(images/background2.png);
+    background-size: 204px;
+    background-color: #043106;
+    text-align: left;
+    color: #ebfaea;
+    
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; 
+}
+#Header div{
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+    margin-bottom: 10px;
+}
+#scoreDisplay {
+    font-size: 24px;
+    font-weight: bold;
+    padding-right: 80px;
+}
+#header button {
+    padding: 8px 16px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+}
+.h1 {
+    font-size: 90px;
+}
+#secondHeader {
+    position: sticky;
+    top: 60px;
+    z-index: 6;
+
+    left: 20px;
+    width: 100%;
+    max-width: 600px;
+    background-color: #0c093d;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 4px solid #c3c2ff;
+    border-radius: 10px;
+    color:#d2cfdd;
+}
+#secondHeader div {
+    border: 2px;
+    border-color: #d7cdff;
+    margin: auto;
+    padding: 16px;
+    width: auto;
+}
+#secondHeader a {
+    color:#d7cdff;
+    font-size: 24px;
+}
+.big {
+    font-size: 30px;
+}
+
+.question-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap; 
+    margin: 20px;
+}
+.question-box {
+    border: 2px solid #130047;
+    background-color: #d2cfdd;
+    padding: 15px;
+    border-radius: 8px;
+    max-width: 100%;
+    max-width: 250px;
+    flex: 1;
+}
+.question-box img {
+    width: fit-content;
+}
+
+@media (max-width: 600px) {
+    .question-container {
+        flex-direction: column;
+    }
+}
+#message {
+    margin-top: 20px;
+    font-weight: bold;
+}
+.correct {
+    background-color: #c9f7c3;
+    border-color: #41a541;
+}
+
+.incorrect {
+    background-color: #f7c3c3;
+    border-color: #a54141;
+}

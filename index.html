@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Caden's Flag Quiz</title>
+<link rel="stylesheet" href="quizStyle.css">
+</head>
+<body>
+
+<div id="header">
+    <div>
+        <img src="images/globe.png" width="150px" style="border: 4px solid rgb(2, 26, 2)" alt="drawing of globe">
+    </div>
+    <div class="inHeader">
+        <h1 style="margin-bottom: 2px; margin-top: 0px; font-size: 60px;">Flags of the World Quiz</h1>
+        
+        <p style="color: rgb(168, 194, 168);">How many can you get right?</p>
+    </div>
+    <div id="scoreDisplay">
+        <br>
+        <p id="message"></p>
+    </div>
+</div>
+
+<div id="secondHeader">
+    <div><a href="index.html">Home page</a></div>
+    <div><a href="easy.html">Easy</a></div>
+    <div><a href="medium.html">Medium</a></div>
+    <div><a href="hard.html">Hard</a></div>
+</div>
+
+<h1 style="padding-left: 20px;">Welcome!</h1>
+
+<div class="question-container">
+    <div class="question-box" style="min-width: 70%; ">
+        <p class="big">This website is heavily inspired by the sporcle quiz <a href="https://www.sporcle.com/games/g/worldflags">"Flags of the World".</a></p>
+        <p class="big">My friends and I play it a lot but I have always had a few issues with it. I always felt the images were too small and it wasnt very beginer friendly so I set out to fix those issues here!</p>
+        <p class="big">The ways I went about achiving these goals were... </p>
+        <p class="big">1. Making the images much larger (and higher quality) (and have the correct colors) I got the images of the flags from <a href="https://www.countries-ofthe-world.com/flags-of-the-world.html">here!</a></p>
+        <p class="big">2. Making an easy mode where players can learn the most recognizable flags (the flags I had the easiest time learning at least), and then a medium mode where players are thrown into learning all the flags, but just 20 at a time to make it more managable.</p>
+        <p class="big">Fun flag trivia: Did you know there is only one flag that does not have the colors red white or blue on it?</p>
+        <br>
+        <p class="big">Can you guess it?</p>
+        <br>
+        <br>
+        <p class="big">Want the answer?</p>
+        <br>
+        <br>
+        <br>
+        <p class="big">It's the fourth flag listed in the "my favorite flags" column.</p>
+        <br>
+        <br>
+        <br>
+        <p class="big">Anyway, I hope you enjoy!</p>
+    </div>
+
+    <div class="question-box" style="min-width: 20%;" >
+        <p class="big">These are some of my favorite flags!</p>
+        <img src="images/flags/flag-of-Eswatini.png" style="margin: 20px; border: 8px solid rgb(3, 3, 31)">
+        <br>
+        <img src="images/flags/flag-of-Kiribati.png" style="margin: 20px; border: 8px solid rgb(3, 3, 31)">
+        <br>
+        <img src="images/flags/flag-of-North-Macedonia.png" style="margin: 20px; border: 8px solid rgb(3, 3, 31)">
+        <br>
+        <img src="images/flags/flag-of-Jamaica.png" style="margin: 20px; border: 8px solid rgb(3, 3, 31)">
+        <br>
+        <img src="images/flags/flag-of-Timor-Leste.png" style="margin: 20px; border: 8px solid rgb(3, 3, 31)">
+        <br>
+        <img src="images/flags/flag-of-Brazil.png" style="margin: 20px; border: 8px solid rgb(3, 3, 31)">
+    </div>
+</div>
+
+<script>
+    //load other highscores
+    let savedData = JSON.parse(localStorage.getItem("flagQuizData")) || {};
+    savedData.easyHighscore = savedData.easyHighscore || 0;
+    savedData.mediumHighscore = savedData.mediumHighscore || 0;
+    savedData.highscore = savedData.highscore || 0;
+
+    //set message to sum of all high scores
+    const messageBox = document.getElementById("message");
+    messageBox.innerHTML = `Total Score: ${savedData.highscore + savedData.mediumHighscore + savedData.easyHighscore}/227`;
+</script>
+
+
+</body>
+</html>

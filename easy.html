@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Caden's Flag Quiz</title>
+<link rel="stylesheet" href="quizStyle.css">
+</head>
+<body>
+
+<div id="header">
+    <div>
+        <img src="images/globe.png" width="150px" style="border: 4px solid rgb(2, 26, 2)" alt="drawing of globe">
+    </div>
+    <div class="inHeader">
+        <h1 style="margin-bottom: 2px; margin-top: 0px; font-size: 60px;">Flags of the World Quiz</h1>
+        
+        <p style="color: rgb(168, 194, 168);">How many can you get right?</p>
+    </div>
+    <div id="scoreDisplay">
+        <p id="message"></p>
+        <br>
+        <button id="submit">Submit</button>
+    </div>
+</div>
+
+<div id="secondHeader">
+    <div><a href="index.html">Home page</a></div>
+    <div><a href="easy.html">Easy</a></div>
+    <div><a href="medium.html">Medium</a></div>
+    <div><a href="hard.html">Hard</a></div>
+</div>
+
+<h1 style="padding-left: 20px;">Easy Quiz :)</h1>
+
+<div class="question-container" id="flagQuestions"> </div> <!-- all questions/images will get added into this div -->
+<br>
+
+<script>
+    //set score to be 0 and highscore to be previous best
+    let savedData = JSON.parse(localStorage.getItem("flagQuizData")) || {};
+    if (savedData.easyHighscore === undefined) {
+        savedData.easyHighscore = 0;
+    }
+    const messageBox = document.getElementById("message");
+    messageBox.innerHTML = `Score: 0/10<br>High Score: ${savedData.easyHighscore}/10`;
+
+    // short list of some countries
+    const countries = [
+        "Australia","Brazil","Canada","China","France","Germany","India","Ireland","Italy","Jamaica",
+        "Japan","South-Korea","Mexico","Nepal","Netherlands","Palestine","Poland","Russia","South-Africa",
+        "Spain","Sweden","Switzerland","Thailand","Turkey","Ukraine","United-Kingdom","United-States-of-America"
+    ];
+    // shuffle array so it isnt in alphabetical order every time
+    function shuffleArray(arr) {
+        arr.sort(() => Math.random() - 0.5);
+    }
+    shuffleArray(countries);
+
+    // generate the boxes that contain the flags and entry box
+    const container = document.getElementById("flagQuestions");
+
+    countries.forEach((country, index) => {
+        if (index >= 10) { return }; // exit once 10 questions are generated to make it even easier
+        const boxNumber = index + 1;
+
+        const div = document.createElement("div");
+        div.classList.add("question-box");
+        div.id = "box" + boxNumber;
+
+        div.innerHTML = `<img src="images/flags/flag-of-${country}.png" alt="Flag of ${country}" width="204px">
+                        <p id="p${boxNumber}">What country\'s flag is this:</p>
+                        <input type="text" id="q${boxNumber}" autocomplete="off">`;
+        container.appendChild(div);
+    });
+
+    document.getElementById("submit").addEventListener("click", function() {
+        const answers = [];
+
+        for (let i in countries) {
+            // turn all countries into lowercase versions of themselves without spaces or dashes to make them easier to guess 
+            // the user's guess will get the same treatment (gets rid of caps,spaces,and blank space)
+            answers.push(countries[i].replace(/\s|-/g, "").toLowerCase() );
+        };
+        // console.log(answers);
+        // shuffleArray(answers);
+        // console.log(answers);
+
+        let score = 0;
+
+        for (id = 1; id <= 10; id ++) {
+            // checks if user put in any input
+            let userInput = "";
+            if(document.getElementById("q" + id)){
+                // makes it so user's string input is more likely to match the country name (gets rid of caps,spaces,and blank space)
+                userInput = document.getElementById("q" + id).value.replace(/\s|-/g, "").toLowerCase();
+            }
+            //console.log("=============" + id.substring());
+            const box = document.getElementById("box" + id);
+
+            box.classList.remove("correct", "incorrect"); // remove the correctness class from boxes so resubmitting works properly
+
+            if (userInput == answers[(id-1)]) {
+                box.classList.add("correct");
+                document.getElementById("p" + id).innerHTML = countries[id-1].replace(/-/g, " ");
+                document.getElementById("q" + id).remove();
+                score = score + 1; // they got one rigth so add 1 to score
+            } else {
+                box.classList.add("incorrect");
+                document.getElementById("p" + id).innerHTML = countries[id-1].replace(/-/g, " ");
+                document.getElementById("q" + id).remove();
+            }
+        }
+
+        //save user's score, replace old high score if this new one is higher
+        if (score > savedData.easyHighscore) {
+            savedData.easyHighscore = score;
+            localStorage.setItem("flagQuizData", JSON.stringify(savedData));
+        }
+        messageBox.innerHTML = `Score: ${score}/10<br>High Score: ${savedData.easyHighscore}/10`;
+        
+    });
+</script>
+
+</body>
+</html>
