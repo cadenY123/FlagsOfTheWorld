@@ -75,11 +75,11 @@
     let savedData = JSON.parse(localStorage.getItem("flagQuizData")) || {};
     savedData.easyHighscore = savedData.easyHighscore || 0;
     savedData.mediumHighscore = savedData.mediumHighscore || 0;
-    savedData.highscore = savedData.highscore || 0;
+    savedData.hardHighscore = savedData.hardHighscore || 0;
 
     //set message to sum of all high scores
     const messageBox = document.getElementById("message");
-    messageBox.innerHTML = `Total Score: ${savedData.highscore + savedData.mediumHighscore + savedData.easyHighscore}/227`;
+    messageBox.innerHTML = `Total Score: ${savedData.hardHighscore + savedData.mediumHighscore + savedData.easyHighscore}/227`;
 </script>
 
 

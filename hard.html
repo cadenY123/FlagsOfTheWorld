@@ -37,12 +37,12 @@
 
 <script>
     //set score to be 0 and highscore to be previous best
-    let savedData = JSON.parse(localStorage.getItem("flagQuizData")) || { highscore: 0 };
-    if (savedData.highscore === undefined) {
-        savedData.highscore = 0;
+    let savedData = JSON.parse(localStorage.getItem("flagQuizData")) || { hardHighscore: 0 };
+    if (savedData.hardHighscore === undefined) {
+        savedData.hardHighscore = 0;
     }
     const messageBox = document.getElementById("message");
-    messageBox.innerHTML = `Score: 0/197<br>High Score: ${savedData.highscore}/197`;
+    messageBox.innerHTML = `Score: 0/197<br>High Score: ${savedData.hardHighscore}/197`;
 
     // list of 197 countries
     const countries = [
@@ -129,11 +129,11 @@
         }
 
         //save user's score, replace old high score if this new one is higher
-        if (score > savedData.highscore) {
-            savedData.highscore = score;
+        if (score > savedData.hardHighscore) {
+            savedData.hardHighscore = score;
             localStorage.setItem("flagQuizData", JSON.stringify(savedData));
         }
-        messageBox.innerHTML = `Score: ${score}/197<br>High Score: ${savedData.highscore}/197`;
+        messageBox.innerHTML = `Score: ${score}/197<br>High Score: ${savedData.hardHighscore}/197`;
         
     });
 </script>
