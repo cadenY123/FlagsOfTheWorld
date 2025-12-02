@@ -1,0 +1,35 @@
+Hello, my project is a flags of the world quiz website.
+There are 4 pages, home, easy, medium, and hard.
+
+
+The hard page has all 197 flags randomly shuffled with text boxes for you to input the country's name in. If you type it in right then when you click submit it checks if you are right. your score as well as a high score for this device is shown in the top right.
+The medium page is similar to the hard page but it only shows 20 flags that you have to name to make it easier to get a high score.
+The small page is like the medium page but it has even fewer flags shown at 10 and a smaller pool of potential flags you can guess, not all 197, (the pool was arbitrarily chosen by me, I picked the ones I thought would be the most recognizable)
+The home page has introductory info about the site and a total score summed across all the pages.
+
+
+Here are the sources I used to make this:
+
+
+Help on character replacement:
+https://stackoverflow.com/questions/16576983/replace-multiple-characters-in-one-replace-call
+
+
+Flag images come from here:
+https://www.countries-ofthe-world.com/flags-of-the-world.html
+
+
+Multiline quotes:
+https://www.freecodecamp.org/news/javascript-multiline-string-how-to-create-multi-line-strings-in-js/
+
+
+Shuffle array function:
+https://www.w3docs.com/snippets/javascript/how-to-randomize-shuffle-a-javascript-array.html
+
+
+Timer Stuff: (scrapped)
+https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_countdown
+
+
+Background image setup:
+https://www.w3schools.com/html/html_images_background.asp
